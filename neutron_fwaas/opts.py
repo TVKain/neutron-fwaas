@@ -33,4 +33,5 @@ def list_opts():
          neutron.conf.services.provider_configuration.serviceprovider_opts),
         ('default_fwg_rules',
          neutron_fwaas.extensions.firewall_v2.default_fwg_rules_opts),
+        ('faucet', neutron_fwaas.extensions.firewall_v2.firewall_quota_opts)
     ]
