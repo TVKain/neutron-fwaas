@@ -123,6 +123,14 @@ firewall_quota_opts = [
                help=_('Number of firewall rules allowed per tenant. '
                       'A negative value means unlimited.')),
 ]
+
+faucet_opts = [
+    cfg.StrOpt('file_path', default="/etc/faucet/faucet.yaml", help=_('Path to yaml config file for faucet')), 
+    cfg.IntOpt('internal_interface', default=1, help=_('Internal interface OpenFlow number on br-f (the physical interface) port')),
+    cfg.IntOpt('external_interface', default=1, help=_('External interface OpenFlow number on br-f (the patch port)'))
+]
+
+cfg.CONF.register_opts(faucet_opts, 'faucet')
 cfg.CONF.register_opts(default_fwg_rules_opts, 'default_fwg_rules')
 cfg.CONF.register_opts(firewall_quota_opts, 'QUOTAS')
 
