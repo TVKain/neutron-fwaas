@@ -1,0 +1,16 @@
+includes:
+  - vlan_400.yaml
+  - vlan_500.yaml
+dps:
+  br_f:
+    dp_id: 1
+    hardware: Open vSwitch
+    interfaces:
+      1:
+        name: egress_interface
+        tagged_vlans:
+          - vlan_500
+      2:
+        name: ingress_interface
+        tagged_vlans:
+          - vlan_500

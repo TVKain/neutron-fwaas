@@ -1,0 +1,3 @@
+vlans:
+  vlan_500:
+    vid: 500

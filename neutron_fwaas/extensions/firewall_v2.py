@@ -126,8 +126,9 @@ firewall_quota_opts = [
 
 faucet_opts = [
     cfg.StrOpt('file_path', default="/etc/faucet/faucet.yaml", help=_('Path to yaml config file for faucet')), 
-    cfg.IntOpt('internal_interface', default=1, help=_('Internal interface OpenFlow number on br-f (the physical interface) port')),
-    cfg.IntOpt('external_interface', default=1, help=_('External interface OpenFlow number on br-f (the patch port)'))
+    cfg.IntOpt('dp_id', default=1, help=_('Datapath ID of the bridge to be controlled')),
+    cfg.IntOpt('egress_interface', default=1, help=_('Egress interface OpenFlow number on br-f (the physical interface) port')),
+    cfg.IntOpt('ingress_interface', default=2, help=_('Ingress interface OpenFlow number on br-f (the patch port)'))
 ]
 
 cfg.CONF.register_opts(faucet_opts, 'faucet')

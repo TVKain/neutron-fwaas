@@ -15,6 +15,9 @@ pyroute2>=0.7.2;sys_platform!='win32' # Apache-2.0 (+ dual licensed GPL2)
 neutron>=23.0.0.0b2 # Apache-2.0
 pyzmq>=14.3.1 # LGPL+BSD
 
+ruamel.yaml
+pydantic
+
 # The comment below indicates this project repo is current with neutron-lib
 # and should receive neutron-lib consumption patches as they are released
 # in neutron-lib. It also implies the project will stay current with TC

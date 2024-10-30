@@ -41,12 +41,21 @@ from oslo_config import cfg
 from neutron_fwaas.services.firewall.service_drivers import driver_api
 from neutron_lib import constants as const
 
+from neutron_fwaas.services.firewall.service_drivers.faucet.faucet import FaucetFirewallManager
+
+from neutron_fwaas.temp.log import logger
+
 LOG = logging.getLogger(__name__)
 
 class FaucetFwaasDriver(driver_api.FirewallDriverDB):
     def __init__(self, service_plugin):
         super(FaucetFwaasDriver, self).__init__(service_plugin)
+        logger.info("In constructor of faucet")
+        
+        self.faucet = FaucetFirewallManager()
         self._mech = None
+        
+        self.faucet.intialize_main_files()
 
     def is_supported_l2_port(self, port):
         return False
@@ -58,9 +67,7 @@ class FaucetFwaasDriver(driver_api.FirewallDriverDB):
         return []
     
     
-    def create_firewall_group_precommit(self, context, firewall_group):
-        LOG.info(f"khanhtv28 {cfg.CONF.faucet.file_path}")
-        
+    def create_firewall_group_precommit(self, context, firewall_group):        
         if not firewall_group['ports']:
             LOG.info("khanhtv28 No ports bound to firewall_group: %s, "
                      "setting this to inactive", firewall_group['id'])
@@ -110,7 +117,7 @@ class FaucetFwaasDriver(driver_api.FirewallDriverDB):
         new_eg_policy = new_firewall_group['egress_firewall_policy_id']
         
         ## For now we'll ignore the policies 
-        
+
         # If there's no ports we'll just set it inactive
         if not new_ports:
             LOG.info("No ports bound to firewall_group: %s, "
@@ -186,4 +193,7 @@ class FaucetFwaasDriver(driver_api.FirewallDriverDB):
         pass
 
     def remove_rule_postcommit(self, context, policy_id, rule_info):
+        pass
+    
+    def _get_vlan_id_from_port(self):
         pass
