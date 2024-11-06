@@ -1,6 +1,0 @@
-acls:
-  allow_arp:
-    - rule:
-        eth_type: '0x0806'
-        action:
-          allow: true

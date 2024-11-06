@@ -1,0 +1,3 @@
+vlans:
+  vlan_900:
+    vid: 900

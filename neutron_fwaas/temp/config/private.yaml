@@ -1,0 +1,33 @@
+acls:
+  allow_ingress_private:
+    - rule:
+        eth_type: '0x0800'
+        ipv4_src: 10.0.0.0/8
+        actions:
+          allow: true
+    - rule:
+        eth_type: '0x0800'
+        ipv4_src: 172.16.0.0/12
+        actions:
+          allow: true
+    - rule:
+        eth_type: '0x0800'
+        ipv4_src: 192.168.0.0/16
+        actions:
+          allow: true
+  allow_egress_private:
+    - rule:
+        eth_type: '0x0800'
+        ipv4_dst: 10.0.0.0/8
+        actions:
+          allow: true
+    - rule:
+        eth_type: '0x0800'
+        ipv4_dst: 172.16.0.0/12
+        actions:
+          allow: true
+    - rule:
+        eth_type: '0x0800'
+        ipv4_dst: 192.168.0.0/16
+        actions:
+          allow: true

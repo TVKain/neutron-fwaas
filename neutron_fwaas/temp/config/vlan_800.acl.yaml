@@ -1,0 +1,86 @@
+acls:
+  1_vlan_800:
+    - rule:
+        eth_type: '0x0800'
+        vlan_vid: 800
+        ct_state: 0/0x20
+        actions:
+          ct:
+            zone: 60800
+    - rule:
+        eth_type: '0x0800'
+        ip_proto: 17
+        vlan_vid: 800
+        ipv4_src: 10.0.0.0/24
+        ct_state: 0x21/0x21
+        actions:
+          allow: false
+    - rule:
+        eth_type: '0x0800'
+        vlan_vid: 800
+        ipv4_src: 1.1.1.1/32
+        ipv4_dst: 2.2.2.2/32
+        ct_state: 0x21/0x21
+        actions:
+          ct:
+            zone: 60800
+            table: 1
+            flags: 1
+    - rule:
+        eth_type: '0x0800'
+        ip_proto: 6
+        vlan_vid: 800
+        ipv4_src: 192.168.0.0/24
+        ipv4_dst: 192.100.0.0/24
+        tcp_dst: 40
+        tcp_src: 30
+        ct_state: 0x21/0x21
+        actions:
+          ct:
+            zone: 60800
+            table: 1
+            flags: 1
+    - rule:
+        eth_type: '0x0800'
+        vlan_vid: 800
+        ct_state: 0x22/0x22
+        ct_zone: 60800
+        actions:
+          allow: true
+    - rule:
+        vlan_vid: 800
+        actions:
+          allow: false
+  2_vlan_800:
+    - rule:
+        eth_type: '0x0800'
+        vlan_vid: 800
+        ct_state: 0/0x20
+        actions:
+          ct:
+            zone: 60800
+    - rule:
+        eth_type: '0x0800'
+        ip_proto: 6
+        vlan_vid: 800
+        ipv4_src: 192.168.0.0/24
+        ipv4_dst: 192.100.0.0/24
+        tcp_dst: 40
+        tcp_src: 30
+        ct_state: 0x21/0x21
+        actions:
+          ct:
+            zone: 60800
+            table: 1
+            flags: 1
+    - rule:
+        eth_type: '0x0800'
+        vlan_vid: 800
+        ct_state: 0x22/0x22
+        ct_zone: 60800
+        actions:
+          allow: true
+    - rule:
+        vlan_vid: 800
+        actions:
+          allow: false

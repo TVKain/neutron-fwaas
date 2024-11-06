@@ -430,7 +430,7 @@ class FirewallDriverDBMixin(FirewallDriver, metaclass=abc.ABCMeta):
     def remove_rule_postcommit(self, context, policy_id, rule_info):
         pass
 
-
+    
 class FirewallDriverDB(FirewallDriverDBMixin):
     """FirewallDriverDBMixin interface for driver with database.
 

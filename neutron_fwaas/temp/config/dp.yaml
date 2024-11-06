@@ -1,0 +1,32 @@
+includes:
+  - arp.yaml
+  - private.yaml
+  - vlan_800.yaml
+  - vlan_800.acl.yaml
+  - vlan_900.yaml
+  - vlan_900.acl.yaml
+dps:
+  br_f:
+    dp_id: 1
+    hardware: Open vSwitch
+    interfaces:
+      1:
+        name: interface_1
+        tagged_vlans:
+          - vlan_800
+          - vlan_900
+        acls_in:
+          - allow_arp
+          - allow_egress_private
+          - 1_vlan_800
+          - 1_vlan_900
+      2:
+        name: interface_2
+        tagged_vlans:
+          - vlan_800
+          - vlan_900
+        acls_in:
+          - allow_arp
+          - allow_ingress_private
+          - 2_vlan_800
+          - 2_vlan_900
