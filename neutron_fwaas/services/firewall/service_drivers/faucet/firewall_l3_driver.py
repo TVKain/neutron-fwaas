@@ -89,11 +89,6 @@ class FaucetFwaasDriver(driver_api.FirewallDriverDB):
 
     def create_firewall_group_postcommit(self, context, firewall_group):
         try:
-            if (
-                firewall_group["ingress_firewall_policy_id"]
-                or firewall_group["egress_firewall_policy_id"]
-            ):
-                LOG.info("khanhtv28 contains ingress or egress firewall policy")
             if firewall_group["ports"]:
                 firewall_group["status"] = const.ACTIVE
                 LOG.info("khanhtv28 firewall contains port")
@@ -162,12 +157,6 @@ class FaucetFwaasDriver(driver_api.FirewallDriverDB):
 
         if new_ports:
             new_firewall_group["status"] = const.ACTIVE
-
-        logger.info(
-            f"FWG with rules: {self.firewall_db.make_firewall_group_dict_with_rules(
-            context=context, firewall_group_id=new_firewall_group["id"]
-        )}"
-        )
 
         self.firewall_db.update_firewall_group_status(
             context, new_firewall_group["id"], new_firewall_group["status"]

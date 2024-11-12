@@ -249,7 +249,7 @@ class FaucetFirewallManager:
                     )
                 )
             else:
-                logger.warning(f"Skipping rule {ops_rule["id"]}")
+                logger.warning(f"Skipping rule {ops_rule['id']}")
 
         logger.info(f"Rules after converted {rules}")
 
@@ -266,7 +266,7 @@ class FaucetFirewallManager:
         if ops_rule["protocol"]:
             if ops_rule["protocol"] not in consts.ALLOWED_PROTOCOLS:
                 logger.warning(
-                    f"Adding acl to vlan {vlan_id} failed: Invalid Protocol {ops_rule["protocol"]} specified"
+                    f"Adding acl to vlan {vlan_id} failed: Invalid Protocol {ops_rule['protocol']} specified"
                 )
                 return False
 
@@ -275,7 +275,7 @@ class FaucetFirewallManager:
                 ipaddress.ip_network(ops_rule["source_ip_address"])
             except Exception as e:
                 logger.warning(
-                    f"Adding acl to vlan {vlan_id} failed: Invalid Source IP Address {ops_rule["source_ip_address"]} specified"
+                    f"Adding acl to vlan {vlan_id} failed: Invalid Source IP Address {ops_rule['source_ip_address']} specified"
                 )
                 return False
 
@@ -284,7 +284,7 @@ class FaucetFirewallManager:
                 ipaddress.ip_network(ops_rule["destination_ip_address"])
             except Exception as e:
                 logger.warning(
-                    f"Adding acl to vlan {vlan_id} failed: Invalid Destination IP Address {ops_rule["destination_ip_address"]} specified"
+                    f"Adding acl to vlan {vlan_id} failed: Invalid Destination IP Address {ops_rule['destination_ip_address']} specified"
                 )
                 return False
 
@@ -293,7 +293,7 @@ class FaucetFirewallManager:
                 int(ops_rule["source_port"])
             except Exception as e:
                 logger.warning(
-                    f"Adding acl to vlan {vlan_id} failed: Invalid Source Port {ops_rule["source_port"]} specified"
+                    f"Adding acl to vlan {vlan_id} failed: Invalid Source Port {ops_rule['source_port']} specified"
                 )
                 return False
 
@@ -302,7 +302,7 @@ class FaucetFirewallManager:
                 int(ops_rule["destination_port"])
             except Exception as e:
                 logger.warning(
-                    f"Adding acl to vlan {vlan_id} failed: Invalid Destination Port {ops_rule["destination_port"]} specified"
+                    f"Adding acl to vlan {vlan_id} failed: Invalid Destination Port {ops_rule['destination_port']} specified"
                 )
                 return False
 
@@ -362,7 +362,7 @@ class FaucetFirewallManager:
             actions=actions,
         )
 
-        logger.info(f"Converted ops_rule {ops_rule["id"]} to faucet rule successfully")
+        logger.info(f"Converted ops_rule {ops_rule['id']} to faucet rule successfully")
 
         logger.info(f"{rule.model_dump_json()}")
 
